@@ -1,13 +1,15 @@
-var express         = require('express'),
-    methodOverride  = require('method-override'),
-    bodyParser      = require('body-parser'),
-    mongoose        = require('mongoose'),
-    app             = express();
+var express          = require('express'),
+    methodOverride   = require('method-override'),
+    expressSanitizer = require('express-sanitizer'),
+    bodyParser       = require('body-parser'),
+    mongoose         = require('mongoose'),
+    app              = express();
 
 mongoose.connect('mongodb://localhost/restufl_blog_app');
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(expressSanitizer());
 app.use(methodOverride('_method'));
 
 var blogSchema = new mongoose.Schema ({
@@ -42,6 +44,10 @@ app.get('/blogs/new', function(req, res){
 
 app.post('/blogs', function(req, res){
   //create blog'
+  console.log(req.body);
+  req.body.blog.body = req.sanitize(req.body.blog.body)
+  console.log('====================')
+  console.log(req.body);
   Blog.create(req.body.blog, function(err, newBlog){
     if(err){
       res.render('new');
@@ -65,6 +71,7 @@ app.get('/blogs/:id', function (req, res){
 
 //EDIT route
 app.get('/blogs/:id/edit', function(req,res){
+  req.body.blog.body = req.sanitize(req.body.blog.body)
   Blog.findById(req.params.id, function(err, foundBlog){
     if(err){
       res.redirect('/blogs');
