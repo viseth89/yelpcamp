@@ -7,17 +7,17 @@ var data = [
   {
     name: 'Luc',
     image: 'https://pbs.twimg.com/media/CpiAC7HUkAAiEKi.jpg',
-    description: 'blah blah blah'
+    description: 'blah blah blah111111111'
   },
   {
     name: 'Jackie',
     image: 'https://images.complex.com/complex/image/upload/c_limit,w_680/fl_lossy,pg_1,q_auto/alooky9m4igizfkn6stx.jpg',
-    description: 'blfdasfdsafwah blah blah'
+    description: 'blfdasfdsafwah blah blah22222222222'
   },
   {
     name: 'menge',
     image: 'https://images.complex.com/complex/image/upload/c_limit,w_680/fl_lossy,pg_1,q_auto/xqvcpw6latd8nuvquag7.jpg',
-    description: 'blah blah bla dasfasfh'
+    description: 'blah blah bla dasfasfh number 3'
   }
 
 ]
