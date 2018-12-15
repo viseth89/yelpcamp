@@ -39,7 +39,8 @@ router.post('/', isLoggedIn, function(req, res) {
       console.log(err);
     } else {
       res.redirect('/campgrounds')
-      console.log(newlyCreated);
+      // console.log(newlyCreated)
+      //(12/14 - 8pm testing to remove entries in terminal);
     }
   });
 });
@@ -56,7 +57,7 @@ router.get('/:id', function(req, res) {
     if (err) {
       console.log(err);
     } else {
-      console.log(foundCampground)
+      // console.log(foundCampground) (12/14 - 8pm testing to remove entries in terminal)
       // render show template with that campground
       res.render('campgrounds/show', {
         campground: foundCampground
