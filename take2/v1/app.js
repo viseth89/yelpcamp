@@ -7,9 +7,15 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.set('view engine', 'ejs')
 
 var campgrounds = [
-    {name: 'volkswagen', image: 'https://cdn.pixabay.com/photo/2013/07/13/11/36/volkswagen-158463_1280.png'},
-    {name: 'salmon creek', image: 'https://cdn.pixabay.com/photo/2016/02/18/22/16/tent-1208201_1280.jpg'},
-    {name: 'salmon creek', image: 'https://cdn.pixabay.com/photo/2016/02/18/22/16/tent-1208201_1280.jpg'}
+    {name: 'volkswagen', image: 'https://pixabay.com/get/e837b1072af4003ed1584d05fb1d4e97e07ee3d21cac104491f7c570a0eeb3bd_340.jpg'},
+    {name: 'salmon creek', image: 'https://pixabay.com/get/e83db50a2ff5083ed1584d05fb1d4e97e07ee3d21cac104491f7c570a0eeb3bd_340.jpg'},
+    {name: 'salmon creek', image: 'https://pixabay.com/get/e83db50a2ff5083ed1584d05fb1d4e97e07ee3d21cac104491f7c570a0eeb3bd_340.jpg'},
+    {name: 'volkswagen', image: 'https://pixabay.com/get/e837b1072af4003ed1584d05fb1d4e97e07ee3d21cac104491f7c570a0eeb3bd_340.jpg'},
+    {name: 'salmon creek', image: 'https://pixabay.com/get/e83db50a2ff5083ed1584d05fb1d4e97e07ee3d21cac104491f7c570a0eeb3bd_340.jpg'},
+    {name: 'salmon creek', image: 'https://pixabay.com/get/e83db50a2ff5083ed1584d05fb1d4e97e07ee3d21cac104491f7c570a0eeb3bd_340.jpg'},
+    {name: 'volkswagen', image: 'https://pixabay.com/get/e837b1072af4003ed1584d05fb1d4e97e07ee3d21cac104491f7c570a0eeb3bd_340.jpg'},
+    {name: 'salmon creek', image: 'https://pixabay.com/get/e83db50a2ff5083ed1584d05fb1d4e97e07ee3d21cac104491f7c570a0eeb3bd_340.jpg'},
+    {name: 'salmon creek', image: 'https://pixabay.com/get/e83db50a2ff5083ed1584d05fb1d4e97e07ee3d21cac104491f7c570a0eeb3bd_340.jpg'},
 ]
 
 app.get('/', function(req, res){
