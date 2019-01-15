@@ -11,14 +11,17 @@ app.set('view engine', 'ejs')
 
 var campgroundSchema = new mongoose.Schema({
     name: String,
-    image: String
+    image: String,
+    description: String,
 })
 
 var Campground = mongoose.model('Campground', campgroundSchema);
 
 // Campground.create(
 //     {   
-//         name: 'volkswagen', image: 'https://pixabay.com/get/e837b1072af4003ed1584d05fb1d4e97e07ee3d21cac104491f7c570a0eeb3bd_340.jpg'
+//         name: 'volkswagen', 
+//         image: 'https://pixabay.com/get/e837b1072af4003ed1584d05fb1d4e97e07ee3d21cac104491f7c570a0eeb3bd_340.jpg',
+//         description:'THis is a huge hill'
 //     }, function(err, campground){
 //         if(err){
 //             console.log(err);
@@ -39,7 +42,7 @@ app.get('/campgrounds', function(req, res){
         if(err){
             console.log(err);
         } else {
-            res.render('campgrounds', {campgrounds:allCampgrounds});
+            res.render('index', {campgrounds:allCampgrounds});
         }
     })
 });
@@ -49,7 +52,8 @@ app.post("/campgrounds", function(req, res){
     //get data from form and add to campgrounds array
     var name = req.body.name
     var image = req.body.image
-    var newCampground = {name:name, image: image}
+    var description = req.body.description
+    var newCampground = {name:name, image: image, description:description}
     // create a new campground and save to db
     Campground.create(newCampground, function(err, newlyCreated){
         if(err){
@@ -66,8 +70,19 @@ app.get("/campgrounds/new", function (req,res){
     res.render('new')
 })
 
+// PAY ATTENTION TO PLACEMENT OF ROUTES notice here how 'campgrounds/new' is above campgrounds/id, this is done otherwise campgrounds/new
+// will register as campgrounds id because of the placement!!!! CRUCIAL INFORMATION!!!!
+// SHOW - shows more info about one campgroud
 app.get('/campgrounds/:id', function(req, res){
-    res.send('This will be the show page one day!')
+    // find the campground with provided ID
+    Campground.findById(req.params.id, function(err, foundCampground){
+        if(err){
+            console.log(err);
+        } else {
+            //render show template with that campground
+            res.render('show', {campground: foundCampground});
+        }
+    });
 })
 
 app.listen(3000);
